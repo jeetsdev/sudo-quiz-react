@@ -1,38 +1,91 @@
-.App {
-  text-align: center;
+@import url("https://sudo-ui.netlify.app/components/components.css");
+@import url("https://use.fontawesome.com/releases/v5.15.4/css/all.css");
+
+/*! Colors here */
+
+:root {
+	--color-pri: hsl(150, 60%, 40%);
+	--text-pri: hsl(150, 20%, 40%);
+	--primary-bg: hsl(0, 0%, 95%);
+	--level-color: hsl(156, 100%, 40%);
+	--level-bg: hsla(156, 100%, 39%, 0.1);
+	--points-color: hsl(45, 100%, 49%);
+	--points-bg: hsl(45, 100%, 49%, 0.1);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/*! Main menu section style here  */
+
+.main__app{
+	
+}
+.main__menu-sec,
+.main__profile-sec {
+	justify-content: flex-start;
+	border-right: 2px solid var(--level-color);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.menu__title-sec,
+.profile-title,
+.main__quiz-title {
+	margin: 2rem 0;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/* Menu options style here */
+.menu__option-sec > a {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	transition: 0.5s;
 }
 
-.App-link {
-  color: #61dafb;
+.menu__option-sec > a:hover,
+.menu__option-active {
+	background-color: var(--color-pri);
+	color: var(--color-white);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/*! main profile section style here  */
+
+.main__profile-sec {
+	border-left: 2px solid var(--level-color);
+}
+
+.main__profile-sec h4 {
+	margin: 2rem 0;
+}
+
+.profile__avatar-sec img {
+	border: 2px solid var(--color-pri);
+}
+
+/*! Profile stats section style here   */
+
+.profile__stats-sec {
+	width: 100%;
+}
+
+.stats__level,
+.stats__point {
+	padding: 0.5rem;
+	min-width: 7rem;
+	min-height: 9rem;
+	display: flex;
+	font-weight: 600;
+	flex-direction: column;
+	justify-content: space-between;
+	border-radius: 10%;
+}
+
+.profile__stats-sec i {
+	font-size: 1.5rem;
+}
+
+.stats__level {
+	color: var(--level-color);
+	background-color: var(--level-bg);
+}
+
+.stats__point {
+	color: var(--points-color);
+	background-color: var(--points-bg);
 }
