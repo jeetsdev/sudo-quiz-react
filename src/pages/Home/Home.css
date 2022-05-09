@@ -1,0 +1,32 @@
+@import url(../../App.css);
+
+/*! Landing page main container style here  */
+
+.container__main {
+	background-color: var(--primary-bg);
+	min-height: 100vh;
+	display: grid;
+	grid-template-columns: 1fr 10fr 3fr;
+}
+
+/* ! Main quiz page style here */
+
+.main__quiz-cat {
+	margin-top: 2rem;
+}
+
+/* Card style here */
+.card {
+	box-shadow: none;
+	min-height: 25rem;
+	max-width: 30ch;
+}
+
+.card .card__sec-upper {
+	background-color: var(--level-bg);
+}
+
+.card .card__upper-overlay a {
+	display: block;
+	padding: 0.4rem;
+}
