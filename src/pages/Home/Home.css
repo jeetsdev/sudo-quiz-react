@@ -9,6 +9,18 @@
 	grid-template-columns: 1fr 10fr 3fr;
 }
 
+/* ! Sidebar style here  */
+
+.menu__option-btn{
+	margin: 1rem 0;
+	font-size: 1.25rem;
+}
+
+.menu__title-sec{
+	min-width:2rem;
+	min-height: 2rem;
+}
+
 /* ! Main quiz page style here */
 
 .main__quiz-cat {

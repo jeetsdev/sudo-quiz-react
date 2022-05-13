@@ -1,23 +1,20 @@
 @import url("https://sudo-ui.netlify.app/components/components.css");
-@import url("https://use.fontawesome.com/releases/v5.15.4/css/all.css");
+/* @import url("https://use.fontawesome.com/releases/v5.15.4/css/all.css"); */
 
 /*! Colors here */
 
 :root {
-	--color-pri: hsl(150, 60%, 40%);
-	--text-pri: hsl(150, 20%, 40%);
-	--primary-bg: hsl(0, 0%, 95%);
-	--level-color: hsl(156, 100%, 40%);
-	--level-bg: hsla(156, 100%, 39%, 0.1);
-	--points-color: hsl(45, 100%, 49%);
-	--points-bg: hsl(45, 100%, 49%, 0.1);
+	--color-pri: #29a366;
+	--text-pri: #527a66;
+	--primary-bg: #f2f2f2;
+	--level-color: #00cc7a;
+	--level-bg: #00c7771a;
+	--points-color: #fabb00;
+	--points-bg: #fabb001a;
 }
 
 /*! Main menu section style here  */
 
-.main__app{
-	
-}
 .main__menu-sec,
 .main__profile-sec {
 	justify-content: flex-start;
@@ -35,13 +32,6 @@
 	width: 50px;
 	height: 50px;
 	border-radius: 50%;
-	transition: 0.5s;
-}
-
-.menu__option-sec > a:hover,
-.menu__option-active {
-	background-color: var(--color-pri);
-	color: var(--color-white);
 }
 
 /*! main profile section style here  */
@@ -51,6 +41,10 @@
 }
 
 .main__profile-sec h4 {
+	margin: 2rem 0;
+}
+
+.main__profile-logout {
 	margin: 2rem 0;
 }
 
