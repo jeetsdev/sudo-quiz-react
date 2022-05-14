@@ -1,5 +1,5 @@
 import "./App.css";
-import { MyToast, Sidebar } from "./components";
+import { MyToast } from "./components";
 import { NavigationRoutes } from "./routes/NavigationRoutes";
 
 function App() {
