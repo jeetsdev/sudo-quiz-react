@@ -16,12 +16,14 @@ const userData = JSON.parse(localStorage?.getItem("user"));
 // Auth provider with redcuer and initial value
 export const AuthProvider = ({ children }) => {
 	const [state, dispatch] = useReducer(authReducer, {
+		loading: false,
 		user: userData,
 		error: {
 			emailError: "",
 			passwordError: "",
 		},
 	});
+	
 	// const navigate = useNavigate();
 	const { SET_ERROR, SET_USER } = ACTION_TYPE;
 
