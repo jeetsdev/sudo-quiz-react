@@ -5,9 +5,10 @@ import { ProfileCard, Sidebar } from '../../components'
 import "./NotFound.css"
 
 export const NotFound = () => {
+
   return (
     <div className='container__main'>
-      <Sidebar />
+      <Sidebar pageTitle={"Ooops"} />
       <main className='error__sec center__flex flex__dir-col'>
         <img className='image__res error__sec-img' src={notFound} alt="not found" />
         <div className='center__flex'>

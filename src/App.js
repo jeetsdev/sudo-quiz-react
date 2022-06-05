@@ -1,5 +1,5 @@
 import "./App.css";
-import { MyToast } from "./components";
+import { Footer, MyToast } from "./components";
 import { NavigationRoutes } from "./routes/NavigationRoutes";
 
 function App() {
@@ -7,6 +7,7 @@ function App() {
 		<div className="App">
 			<MyToast />
 			<NavigationRoutes />
+			<Footer />
 		</div>
 	);
 }

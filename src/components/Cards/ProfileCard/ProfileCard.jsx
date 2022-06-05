@@ -1,12 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import { avatarImg, notLoggedInImg } from '../../assets'
-import { useAuth } from '../../contexts/auth-context'
+import { useAuth, useQuiz } from '../../../contexts'
+import { FaBrain, FaBitcoin } from "react-icons/fa"
+import { avatarImg, notLoggedInImg } from "../../../assets"
+
 
 export const ProfileCard = () => {
 
     const { authState: { user }, logout } = useAuth();
-    console.log('user: ', user);
+    const { quizState: { userScore } } = useQuiz();
 
     return (
         <div className="main__profile-sec center__flex flex__dir-col">
@@ -17,19 +19,19 @@ export const ProfileCard = () => {
                         <img
                             src={avatarImg}
                             alt="img-avatars"
-                            className="avatars avatar-big border__rad-full margin-1rem"
+                            className="avatars avatar-big border__rad-4px margin-1rem"
                         />
                     </div>
                     <div className="profile__stats-sec center__flex">
                         <div className="stats__level margin__lr-8px">
-                            <i className="fas fa-brain" />
+                            <FaBrain className='stats__icon' />
                             <p>Level</p>
-                            <p className="text-big txt-center">2</p>
+                            <p className="text-big txt-center">1</p>
                         </div>
                         <div className="stats__point margin__lr-8px">
-                            <i className="fab fa-bitcoin" />
-                            <p>Point</p>
-                            <p className="text-big txt-center">500</p>
+                            <FaBitcoin className='stats__icon' />
+                            <p>Points</p>
+                            <p className="text-big txt-center">{userScore}</p>
                         </div>
                     </div>
                     {user && <button className='btns btn__primary margin-1rem border__rad-4px' onClick={() => logout()}>Logout</button>}

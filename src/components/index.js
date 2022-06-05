@@ -1,6 +1,9 @@
 export { MyToast } from "./MyToast/MyToast";
-export { ProfileCard } from "./ProfileCard/ProfileCard";
+export { ProfileCard } from "./Cards/ProfileCard/ProfileCard";
 export { Sidebar } from "./Sidebar/Sidebar";
-export { QuizCard } from "./QuizCard/QuizCard";
+export { QuizCard } from "./Cards/QuizCard/QuizCard";
 export { NotRequireAuth } from "./Authentication/NotRequireAuth";
 export { RequireAuth } from "./Authentication/RequireAuth";
+export { QuestionCard } from "./Cards/QuestionCard/QuestionCard";
+export { ResultCard } from "./Cards/ResultCard/ResultCard";
+export { Footer } from "./Footer/Footer";
