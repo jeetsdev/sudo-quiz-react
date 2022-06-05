@@ -9,10 +9,10 @@ import "./Result.css"
 
 export const Result = () => {
     const { categoryName } = useParams();
-    const { quizState: { quizzes, userAns, userScore }, quizDispatch } = useQuiz();
+    const { quizState: { quizzes, userAns }, quizDispatch } = useQuiz();
     const categoryQus = quizzes.filter(quiz => quiz.category === categoryName);
     const { SET_USER_SCORE } = ACTION_TYPE;
-    
+
     // Getting total score here
     const scoreReducer = (totalScore, currentQus, currentIndex) => {
         return currentQus.answer === userAns[currentIndex] ? { ...totalScore, score: totalScore.score += 10 } : { ...totalScore };
