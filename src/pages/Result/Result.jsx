@@ -1,17 +1,16 @@
 import { useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { ProfileCard, Sidebar, ResultCard } from "../../components";
 import { useQuiz } from '../../contexts';
 import { ACTION_TYPE } from '../../utils';
 import "./Result.css"
-
-
 
 export const Result = () => {
     const { categoryName } = useParams();
     const { quizState: { quizzes, userAns }, quizDispatch } = useQuiz();
     const categoryQus = quizzes.filter(quiz => quiz.category === categoryName);
     const { SET_USER_SCORE } = ACTION_TYPE;
+    const navigate = useNavigate();
 
     // Getting total score here
     const scoreReducer = (totalScore, currentQus, currentIndex) => {
@@ -19,14 +18,19 @@ export const Result = () => {
     }
     const finalScore = categoryQus.reduce(scoreReducer, { score: 0 });
 
-    // Setting final score here
-    useEffect(() => {
+    // Submiting score here
+    const submitHandler = () => {
         quizDispatch({
             type: SET_USER_SCORE,
             payload: finalScore.score,
         })
-    }, [quizDispatch, SET_USER_SCORE, finalScore.score])
+        navigate("/")
+    }
 
+    // Scrooling to top
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [])
 
     return (
         <div className="container__main">
@@ -45,7 +49,7 @@ export const Result = () => {
                             return <ResultCard currentQus={question} currentIndex={index} />
                         })
                     }
-                    <Link to={"/"} className='btns btn__primary border__rad-4px margin-1rem'>Home</Link>
+                    <button className='btns btn__primary border__rad-4px margin-1rem' onClick={submitHandler}>Submit</button>
                 </div>
             </main>
             <ProfileCard />
