@@ -1,0 +1,16 @@
+.result__score-sec p{
+    font-weight: 800;
+    font-size: 1.5rem;
+}
+
+.result-option{
+    background-color: var(--points-bg);
+}
+
+.right-option{
+    background-color: var(--level-color);
+}
+
+.wrong-option{
+    background-color: var(--color-trans-red);
+}

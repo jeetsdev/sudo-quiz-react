@@ -8,6 +8,7 @@ import { ProfileCard, Sidebar } from "../../components";
 import { useAuth } from "../../contexts/auth-context";
 import toast from "react-hot-toast";
 import { ACTION_TYPE } from "../../utils";
+import { loader } from "../../assets";
 
 export const Login = () => {
 
@@ -18,8 +19,8 @@ export const Login = () => {
         passType: "password"
     })
     const [rememberMe, setRememberMe] = useState(false);
-    const { login, authState: { error }, validateEmailAndPass, authDispatch } = useAuth();
-    const { SET_ERROR } = ACTION_TYPE;
+    const { login, authState: { error,loading }, validateEmailAndPass, authDispatch } = useAuth();
+    const { SET_ERROR, SET_LOADING } = ACTION_TYPE;
     const navigate = useNavigate();
 
     // On submit handler 
@@ -34,8 +35,16 @@ export const Login = () => {
                 },
             });
             try {
+                authDispatch({
+                    type: SET_LOADING,
+                    payload: true,
+                })
                 await login(loginFormData.email, loginFormData.password);
                 navigate("/");
+                authDispatch({
+                    type: SET_LOADING,
+                    payload: false,
+                })
                 toast.success("Login successful");
             } catch (error) {
                 switch (error.message.split("auth/")[1]) {
@@ -68,12 +77,14 @@ export const Login = () => {
 
     return (
         <div className="container__main">
-            <Sidebar />
-            <div className="center__flex">
-
+            <Sidebar pageTitle={"Login"}/>
+            <div className="center__flex loader__container">
                 {/* Validation form here */}
                 <div className="login__handler center__flex flex__dir-col">
-                    <form onSubmit={(event) => loginHandler(event)} className="container__main-login center__flex flex__dir-col">
+                    <form onSubmit={(event) => loginHandler(event)} className="container__main-login center__flex flex__dir-col loader__container">
+                        {loading&&<div className="loader__img center__flex">
+                            <img src={loader} alt="loader here"/>
+                        </div>}
                         <h4 className="margin-1rem h3">Login</h4>
 
                         {/* Email section here */}
@@ -101,7 +112,7 @@ export const Login = () => {
                             <input type="checkbox" id="remember__btn" required />
                             <label htmlFor="remember__btn" className=" margin__lr-8px txt-mid" value={rememberMe} onClick={() => setRememberMe((prevState) => !prevState)}>Remember Me</label>
                         </div>
-                        <button className="btns btn__primary btn-login border__rad-4px">Login</button>
+                        <button className="btns btn__primary btn-login border__rad-4px" disabled={loading}>Login</button>
                         <p className="btns btn__link" onClick={testCredentialHandler}>Use test credentials</p>
                     </form>
 

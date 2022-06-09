@@ -8,6 +8,7 @@ import { ProfileCard, Sidebar } from "../../components";
 import { useAuth } from "../../contexts/auth-context";
 import { ACTION_TYPE } from "../../utils";
 import toast from "react-hot-toast";
+import { loader } from "../../assets";
 
 export const SignUp = () => {
 
@@ -18,8 +19,8 @@ export const SignUp = () => {
     passType: "password",
   })
 
-  const { signUp, authState: { error }, validateEmailAndPass, authDispatch } = useAuth();
-  const { SET_ERROR } = ACTION_TYPE;
+  const { signUp, authState: { error, loading }, validateEmailAndPass, authDispatch } = useAuth();
+  const { SET_ERROR, SET_LOADING } = ACTION_TYPE;
   const navigate = useNavigate();
 
   const signUpHandler = async (event) => {
@@ -33,8 +34,16 @@ export const SignUp = () => {
         },
       });
       try {
+        authDispatch({
+          type: SET_LOADING,
+          payload: true,
+        })
         await signUp(signupFormData.email, signupFormData.password);
         navigate("/");
+        authDispatch({
+          type: SET_LOADING,
+          payload: false,
+        })
         toast.success("Sign up successfully.");
       } catch (error) {
         switch (error.message.split("auth/")[1]) {
@@ -56,11 +65,14 @@ export const SignUp = () => {
 
   return (
     <div className="container__main">
-      <Sidebar />
+      <Sidebar pageTitle={"Sign Up"}/>
 
       {/* Validation form here */}
       <div className="signup__handler center__flex flex__dir-col">
-        <form onSubmit={(event) => signUpHandler(event)} className="container__main-login center__flex flex__dir-col">
+        <form onSubmit={(event) => signUpHandler(event)} className="container__main-login center__flex flex__dir-col loader__container">
+          {loading && <div className="loader__img center__flex">
+            <img src={loader} alt="loader here" />
+          </div>}
           <h4 className="margin-1rem h3">Sign Up</h4>
           <div className="margin-1rem main__login-inputs center__flex">
             <FaUserCircle className="icons" />
@@ -92,7 +104,7 @@ export const SignUp = () => {
             <input type="checkbox" id="tac__btn" required />
             <label htmlFor="tac__btn" className=" margin__lr-8px">I agree to all the Terms & Conditions</label>
           </div>
-          <button className="btns btn__primary margin-1rem border__rad-4px">Sign Up</button>
+          <button className="btns btn__primary margin-1rem border__rad-4px" disabled={loading}>Sign Up</button>
         </form>
         <div className="center__flex flex__dir-col margin-1rem">
           <p>Already have an account? <Link to={"/login"} className="btns btn__link">Login</Link></p>

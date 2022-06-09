@@ -1,0 +1,25 @@
+/* Question card style here  */
+.qus__card {
+	width: 40rem;
+}
+
+/* card Title style here */
+.qus-title {
+	display: flex;
+}
+
+/* oprions style here */
+.qus-otpion {
+	transition: backgroundColor 0.3s ease-in-out;
+	background-color: var(--color-off-white);
+	background-color: var(--points-bg);
+	cursor: pointer;
+}
+
+.qus-otpion:hover {
+	background-color: var(--level-color);
+}
+
+.clicked-option {
+    background-color: var(--level-color);
+}

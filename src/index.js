@@ -2,14 +2,16 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter as Router } from "react-router-dom";
 import App from "./App";
-import { AuthProvider } from "./contexts";
+import { AuthProvider, QuizProvider } from "./contexts";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
 	<React.StrictMode>
 		<Router>
 			<AuthProvider>
-				<App />
+				<QuizProvider>
+					<App />
+				</QuizProvider>
 			</AuthProvider>
 		</Router>
 	</React.StrictMode>,
