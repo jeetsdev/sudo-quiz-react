@@ -21,4 +21,5 @@ Sudo Quiz is an online quiz platform to play quizzes.
 
 ### Demo
 
-![demo](https://res.cloudinary.com/dz7duml2h/video/upload/v1654855718/2022-06-10_15-35-33_apmlam.mkv)
+https://user-images.githubusercontent.com/44586579/173044224-70df94bb-5253-4181-abdc-bfe304976661.mp4
+
